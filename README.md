@@ -7,8 +7,8 @@ Intro
  Last but not least it supports multiple level of assurances. Allowing application to choose
  the level of thrust depending on the source of Social authentication or the quality of the
  profile they get.
-
- Demo:  http://oidconnect.breizhme.net
+ ![Mobile Social Login](http://geotobe.localnet//images/gtb/samples/openid-connect-social-login.png)
+ [Demo] http://oidconnect.breizhme.net
 
 Manual Installation:
   Until L5 remains in beta OidConnect will not be installable by 'composer'
