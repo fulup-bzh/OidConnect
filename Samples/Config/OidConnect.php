@@ -19,7 +19,7 @@
  */
 
 $idpImagesDir = '/images/social/';
-$redirectDir  = 'http://oidconnect.breizhme.net/auth/';
+$redirectDir  = 'http://oidconnect.localhost/auth/';
 
 return [
     // Default Users, Authentication and Provisioning Classes
@@ -47,6 +47,7 @@ return [
 
     'orange-partner' => [
         // https://www.orangepartner.com/content/welcome-to-your-dashboard
+        // Warning: Orange does not accept localhost as redirect but will accept oid.localnet that point on 127.0.0.1
         'name'          => 'orange',
         'uid'           => 33002,
         'provider'      => 'OidConnect\IdpDrivers\OrangeProvider',

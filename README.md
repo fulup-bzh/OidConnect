@@ -65,24 +65,36 @@ INSTALLATION:
 
 4) Download and uncompressed OidConnect in your L5 project root directory.
 
+   wget https://github.com/fulup-bzh/OidConnect/archive/master.zip
+
    Do not place OidConnect in 'app' or 'vendor' directories to avoid namespace conflict
-   with existing components. Technically OidConnect directory can be anywhere you want but
-   it is a good idea to keep it under your project root.
+   with existing components. Technically OidConnect directory can be anywhere. Nevertheless
+   common practice is to keep it in your project root, or right under if you want to share
+   the same component in between multiple applications.
 
 5) Update autoload class path, to reflect the path you choose.
 
    edit composer.json and add a new directory in 'psr-4'
      "psr-4": {
 		"AppNameSpace\\": "app/",
-		"OidConnect\\": "OidConnect"
+		"OidConnect\\": "OidConnect/"
   	 }
+
+   Note: replace  "OidConnect/" with what ever path you used. OidConnect can even reside outside
+   of your application tree. For exemple "OidConnect\\": "../OidConnect/" allow to share OidConnect
+   in between multiple application, which can be very convenient when developing.
 
    update autoloader cache with command: 'composer dumpautoload'
 
+5) If you want to use Orange provider for test, create an alias on localhost
+    ex: in your /etc/hosts   "127.0.0.1 oidconnect.localnet"
+
 6) Check you basic install works
 
-     - start a local server with : php -t public -S localhost:8080
-     - point a browser on: http://localhost:8080
+     - start a local server with : php -t public -S oidconnect.localnet:8080
+     - point a browser on: http://oidconnect.localnet:8080
+
+     Note: you can replace oidconnect.localnet if you only test with GitHub+Facebook
 
      If you get L5 welcome page, you're ready for next step
 
@@ -181,6 +193,11 @@ H) Get API keys from IDPs authentication providers.
    for test. Facebook and Orange accept Localhost redirect in development mode.
    Google and Yahoo do not accept redirect on localhost.
 
+   Warning: For Orange you should not use localhost:8080 as redirect for your
+   test, but oid.localnet:8080 that you point in your /etc/hosts on 127.0.0.1
+   While this alias approach is not mandated for them, GitHub and Facebook support
+   it.
+
    When you're done, your resources/config/OidConnect.php file should
    have a valid key and redirect URL for each providers you wish
    to use.
@@ -202,6 +219,11 @@ H) Get API keys from IDPs authentication providers.
   to leave comment on a blog, or store user preferences. They is no real need
   for a login page, when a user hit a protected page, when needed he is
   redirected for authentication.
+
+  WARNING: I used annotation in my controller sample, and it looks like they
+  where will be removed from L5. Until annotation come back as un external
+  package. You may have either to use an older version of L5 or build your
+  route and middleware as before.
 
   OidLoginController:
 
