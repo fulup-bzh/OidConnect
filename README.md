@@ -8,9 +8,9 @@ Intro
  the level of thrust depending on the source of Social authentication or the quality of the
  profile they get.
 
- Demo: http://oidconnect.breizhme.net
- Video English: http://www.dailymotion.com/video/x2eknro_openid-connect-secure-social-login-by-federation-and-loa_school
- Video French:  http://www.dailymotion.com/video/x2eks4g_openid-connect-securiser-les-login-sociaux-par-la-federation_school
+  - Demo: http://oidconnect.breizhme.net
+  - Video English: http://www.dailymotion.com/video/x2eknro_openid-connect-secure-social-login-by-federation-and-loa_school
+  - Video French:  http://www.dailymotion.com/video/x2eks4g_openid-connect-securiser-les-login-sociaux-par-la-federation_school
 
  ![OpenId Connect Social Login Screenshot](http://oidconnect.breizhme.net//images/gtb/samples/openid-connect-social-login.png)
 
