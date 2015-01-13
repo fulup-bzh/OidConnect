@@ -121,12 +121,15 @@ class UserProfileService implements UserProfileInterface  {
         // email is updated only after verification
         $localuser->pseudonym = $profile['pseudonym'];
         if ($profile['avatar'] != null) $localuser->avatar= $profile['avatar'];
-        $localuser->save();
 
         // if user change his email, don't change it but send a verificationmail
         if ($localuser->email != $profile ['email']) {
             $this->sendVerificationCode ($localuser, $profile ['email']);
+            $localuser->email = $profile ['email'];
+            $localuser->loa   = 0;
         }
+
+        $localuser->save();
 
         return ($localuser);
     }

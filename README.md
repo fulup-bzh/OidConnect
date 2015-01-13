@@ -8,8 +8,12 @@ Intro
  the level of thrust depending on the source of Social authentication or the quality of the
  profile they get.
 
+ Demo: http://oidconnect.breizhme.net
+ Video English: http://www.dailymotion.com/video/x2eknro_openid-connect-secure-social-login-by-federation-and-loa_school
+ Video French:  http://www.dailymotion.com/video/x2eks4g_openid-connect-securiser-les-login-sociaux-par-la-federation_school
+
  ![OpenId Connect Social Login Screenshot](http://oidconnect.breizhme.net//images/gtb/samples/openid-connect-social-login.png)
- Online Demo: http://oidconnect.breizhme.net
+
 
 Manual Installation:
   Until L5 remains in beta OidConnect will not be installable by 'composer'
@@ -53,20 +57,20 @@ INSTALLATION:
 
 2) Install 'guzzlehttp' component [this is the only external dependency]
 
-   Update your composer.json and add modify your require array as such
-    "require": {
+     Update your composer.json and add modify your require array as such
+     "require": {
         "laravel/framework": "~5.0",
         "guzzlehttp/guzzle": "~5.0"
-   },
+     },
 
 3) Refresh your distrib
 
-   composer update   # one day someone should explain me why 'composer' it soo slow and require so much resources.
+     composer update   # one day someone should explain me why 'composer' it soo slow and require so much resources.
 
 
 4) Download and uncompressed OidConnect in your L5 project root directory.
 
-   wget https://github.com/fulup-bzh/OidConnect/archive/master.zip
+     wget https://github.com/fulup-bzh/OidConnect/archive/master.zip
 
    Do not place OidConnect in 'app' or 'vendor' directories to avoid namespace conflict
    with existing components. Technically OidConnect directory can be anywhere. Nevertheless
@@ -75,7 +79,7 @@ INSTALLATION:
 
 5) Update autoload class path, to reflect the path you choose.
 
-   edit composer.json and add a new directory in 'psr-4'
+     edit composer.json and add a new directory in 'psr-4'
      "psr-4": {
 		"AppNameSpace\\": "app/",
 		"OidConnect\\": "OidConnect/"
@@ -85,7 +89,7 @@ INSTALLATION:
    of your application tree. For exemple "OidConnect\\": "../OidConnect/" allow to share OidConnect
    in between multiple application, which can be very convenient when developing.
 
-   update autoloader cache with command: 'composer dumpautoload'
+     update autoloader cache with command: 'composer dumpautoload'
 
 5) If you want to use Orange provider for test, create an alias on localhost
     ex: in your /etc/hosts   "127.0.0.1 oidconnect.localnet"
@@ -106,26 +110,26 @@ A) Create an SQL database of configure sqlite and check it worked
    -> mysql --user=oiddemo --password='123456' oiddemo
 
 B) Create the .env file [L5 is unclear about config subdir]
-   APP_ENV=local
-   APP_DEBUG=true
-   APP_KEY=123456789 # result of ./artisan key:generate
-   DB_HOST=localhost
-   DB_DATABASE=oiddemo
-   DB_USERNAME=oiddemo
-   DB_PASSWORD=123456
+     APP_ENV=local
+     APP_DEBUG=true
+     APP_KEY=123456789 # result of ./artisan key:generate
+     DB_HOST=localhost
+     DB_DATABASE=oiddemo
+     DB_USERNAME=oiddemo
+     DB_PASSWORD=123456
 
 C) Declare OidConnect in your L5 namespace
 
-  Edit composer.json and add a line to PSR-4 array
-  "psr-4": {
-      "App\\": "app/",
-      "OidConnect\\": "OidConnect/"
-  }
+     Edit composer.json and add a line to PSR-4 array
+     "psr-4": {
+        "App\\": "app/",
+        "OidConnect\\": "OidConnect/"
+     }
 
 D) Refresh class autoloader with composer
 
-   composer dumpautoload
-    -> Generating autoload files
+     composer dumpautoload
+      -> Generating autoload files
 
 E) Create DB tables: federation, users and email verification tables
 

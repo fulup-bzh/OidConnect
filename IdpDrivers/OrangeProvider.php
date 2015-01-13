@@ -27,7 +27,7 @@ class OrangeProvider extends _DriverSuperClass {
 
 
     // OAuth2 action-1:  getAuthUrl($state) build authorization token url
-    protected $scopes      = ['openid','profile']; // warning scope is erase in controller with getAuthorizationFirst
+    protected $scopes      = ['openid','profile'];
 
     // OAuth2 action-2: getAccessToken($code) request access token remove basic auth from header
     // use default basic auth header from parent class

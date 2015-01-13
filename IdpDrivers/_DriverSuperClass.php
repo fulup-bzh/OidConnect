@@ -25,6 +25,7 @@ abstract class  _DriverSuperClass {
     protected  $openidconnect = false;  // we are 100% OpenID compliant
     protected  $idtokenname   = null;
     protected  $authheader    = null;
+    protected  $oidsubject    = 'sub';
 
     // we need some extra parameters for OpenID Connect
     public function __construct ($app, $config, $fedKeyModel, $socialUser) {
@@ -109,8 +110,7 @@ abstract class  _DriverSuperClass {
 
 
             // we need 'socialuid' for federation, other attributes might be useful to application
-            $tokens ['socialuid'] = $OIDpayload ['sub'];
-            $tokens ['oidpayload']= $OIDpayload;
+            $tokens ['socialuid'] = $OIDpayload [$this->oidsubject];
         } else {
             // For non OpenID IDPs let's retreive token from its name
 
