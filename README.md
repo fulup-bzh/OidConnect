@@ -4,6 +4,17 @@ Intro
  pointing to the same local account. It also allows users to have a different local email/name
  than the one used at the IDP level.
 
+ It supports out of the box
+ - Facebook  OAuth2
+ - Google    OpenID-Connect
+ - Yahoo     OAuth2
+ - Microsoft OAuth2
+ - LinkedIn  OAuth2
+ - Orange    OpenID-Connect
+ - PayPal    OpenID-Connect
+ - GitHub    OAuth2
+ - Local     Password
+
  Last but not least it supports multiple level of assurances. Allowing application to choose
  the level of thrust depending on the source of Social authentication or the quality of the
  profile they get.
