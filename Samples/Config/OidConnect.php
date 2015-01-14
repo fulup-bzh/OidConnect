@@ -19,7 +19,7 @@
  */
 
 $idpImagesDir = '/images/social/';
-$redirectDir  = 'http://oidconnect.localhost/auth/';
+$redirectDir  = 'http://oidconnect.localnet:8080/auth/';
 
 return [
     // Default Users, Authentication and Provisioning Classes
@@ -39,7 +39,7 @@ return [
         'loa'           => 1,  // Email not verified
         'client_id'     => 'xxxxxx',
         'client_secret' => 'xxxxxxxxxxx',
-        'redirect'      => $redirectDir . 'github/oidconnect',
+        'redirect'      => $redirectDir . 'github',
         'logo-img'      => $idpImagesDir .'gh-logo.png',
         'login-img'     => $idpImagesDir .'github-consent.png',
         'avatar-img'    => $idpImagesDir .'github-avatar.jpg',
@@ -55,7 +55,7 @@ return [
         'client_id'     => 'xxxx',
         'client_secret' => 'xxxxxxxxxxx',
         'application_id'=> 'xxxxxxxxxxxxxxx',
-        'redirect'      => $redirectDir . 'orange/oidconnect',
+        'redirect'      => $redirectDir . 'orange-login',
         'logo-img'      => $idpImagesDir .'og-logo.png',
         'login-img'     => $idpImagesDir .'orange-auth.png',
         'avatar-img'    => $idpImagesDir .'orange-avatar.jpg',
@@ -68,7 +68,7 @@ return [
         'provider'      => 'OidConnect\IdpDrivers\FacebookProvider',
         'client_id'     => 'xxxx',
         'client_secret' => 'xxxxxxxxxx',
-        'redirect'      => $redirectDir . 'facebook/oidconnect',
+        'redirect'      => $redirectDir . 'facebook-login',
         'logo-img'      => $idpImagesDir .'fb-logo.png',
         'login-img'     => $idpImagesDir .'facebook-auth.png',
         'avatar-img'    => $idpImagesDir .'facebook-avatar.jpg',
@@ -83,7 +83,7 @@ return [
         'client_id'     => 'xxxxxxxxx',
         'client_secret' => 'xxxxxxx',
         'client_email'  =>'xxxxxxx',
-        'redirect'      => $redirectDir . 'google/oidconnect',
+        'redirect'      => $redirectDir . 'google-login',
         'logo-img'      => $idpImagesDir .'gg-logo.png',
         'login-img'     => $idpImagesDir .'google-auth.png',
         'avatar-img'    => $idpImagesDir .'google-avatar.jpg',
@@ -97,7 +97,7 @@ return [
         'provider'      => 'OidConnect\IdpDrivers\MicrosoftProvider',
         'client_id'     => 'xxxx',
         'client_secret' => 'xxxxx',
-        'redirect'      => $redirectDir . 'microsoft/oidconnect',
+        'redirect'      => $redirectDir . 'microsoft-login',
         'logo-img'      => $idpImagesDir .'ms-logo.png',
         'login-img'     => $idpImagesDir .'microsoft-auth.png',
         'avatar-img'    => $idpImagesDir .'microsoft-avatar.jpg',
@@ -111,7 +111,7 @@ return [
         'provider'      => 'OidConnect\IdpDrivers\YahooProvider',
         'client_id'     => 'xxxxxx--',
         'client_secret' => 'xxxx',
-        'redirect'      => $redirectDir . 'yahoo/oidconnect',
+        'redirect'      => $redirectDir . 'yahoo-login',
         'logo-img'      => $idpImagesDir .'yh-logo.png',
         'login-img'     => $idpImagesDir .'yahoo-auth.png',
         'avatar-img'    => $idpImagesDir .'yahoo-avatar.jpg',
@@ -125,7 +125,7 @@ return [
         'provider'      => 'OidConnect\IdpDrivers\LinkedInProvider',
         'client_id'     => 'xxxxx',
         'client_secret' => 'xxxxxx',
-        'redirect'      => $redirectDir . 'linkedin/oidconnect',
+        'redirect'      => $redirectDir . 'linkedin-login',
         'logo-img'      => $idpImagesDir .'lk-logo.png',
         'login-img'     => $idpImagesDir .'linkedin-auth.png',
         'avatar-img'    => $idpImagesDir .'linkedin-avatar.png',

@@ -55,12 +55,14 @@ INSTALLATION:
     grep '5' composer.json
     -> "laravel/framework": "~5.0"
 
-2) Install 'guzzlehttp' component [this is the only external dependency]
+2) Install 'guzzlehttp' component, this is the only mandatory external dependency for OpenID-Connect. Nevertheless
+   if you wish to use "./artisan route:scan" to test controller samples you may want to add laravel-annotations.
 
      Update your composer.json and add modify your require array as such
      "require": {
         "laravel/framework": "~5.0",
-        "guzzlehttp/guzzle": "~5.0"
+        "guzzlehttp/guzzle": "~5.0",  // this is mandatory for OAuth2 and OpenID
+        "adamgoose/laravel-annotations": "~5.0" // optional but used in samples https://github.com/adamgoose/laravel-annotations
      },
 
 3) Refresh your distrib
@@ -71,6 +73,8 @@ INSTALLATION:
 4) Download and uncompressed OidConnect in your L5 project root directory.
 
      wget https://github.com/fulup-bzh/OidConnect/archive/master.zip
+     unzip master.zip
+     mv OidConnect-master OidConnect
 
    Do not place OidConnect in 'app' or 'vendor' directories to avoid namespace conflict
    with existing components. Technically OidConnect directory can be anywhere. Nevertheless
@@ -150,27 +154,34 @@ E) Create DB tables: federation, users and email verification tables
 
 F) Update your service providers and alias in config/app
 
-     /*
-      * Add OidConnect Providers...
-      */
+    /*
+     * Add OidConnect Providers...
+     */
      'OidConnect\DriverManager\IdpFactoryProvider',
      'OidConnect\UserManagement\UserProfileProvider',
      'OidConnect\LoaAuth\LoaAuthProvider',
 
     /*
-     * Add OidConnect Aliases
+     * Optional annotation module used in sample controller for route and middleware annotations
      */
+
+    'App\Providers\AnnotationsServiceProvider',
+
+     /*
+      * Add OidConnect Aliases
+      */
      'IdpFactory' => 'OidConnect\DriverManager\IdpFactoryFacade',
      'UserProfile'=> 'OidConnect\UserManagement\UserProfileFacade',
      'Auth'       => 'OidConnect\LoaAuth\LoaAuthFacade',
 
-    /*
-     * comment out L5 Auth Service provider and Facade Alias
-     */
-	//'Illuminate\Auth\AuthServiceProvider',
-	//'Auth'      => 'Illuminate\Support\Facades\Auth',
+     /*
+      * comment out L5 Auth Service provider and Facade Alias
+      */
+	  //'Illuminate\Auth\AuthServiceProvider',
+	  //'Auth'      => 'Illuminate\Support\Facades\Auth',
 
-    Note: we replace the original L5 Auth module, because OidConnect
+    No
+    te: we replace the original L5 Auth module, because OidConnect
     inherits from Auth and is 100% backward compatible.
 
 
@@ -178,10 +189,10 @@ F) Update your service providers and alias in config/app
 G) Update Middleware. OidConnect is shipped with a set of standard
    middleware to handle LOA access restriction on controllers.
 
-     // In app/kernel.php add following filters after L5 ones
+     // In app/Http/kernel.php add following filters after L5 ones
      protected $routeMiddleware = [
 		'auth.basic' => 'Illuminate\Auth\Middleware\AuthenticateWithBasicAuth',
-		'auth.guest' => 'GeoToBe\Http\Middleware\RedirectIfAuthenticated',
+		'guest' => 'xxxxxxx\Http\Middleware\RedirectIfAuthenticated',
 
 		'auth.loa0'  => 'OidConnect\LoaAuth\Loa00Middleware',
 		'auth.loa1'  => 'OidConnect\LoaAuth\Loa01Middleware',
@@ -206,6 +217,11 @@ H) Get API keys from IDPs authentication providers.
    When you're done, your resources/config/OidConnect.php file should
    have a valid key and redirect URL for each providers you wish
    to use.
+
+G) Go in Sample directory install:
+     cp Samples/Controllers/*   app/Http/Controllers/.
+     cp -r Samples/Templates/*  resources/views/.
+     cp Samples/Config/*        config/.
 
 
 ---- We are now ready to write our 1st OpenId Connect app ----------------

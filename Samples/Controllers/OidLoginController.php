@@ -191,7 +191,8 @@ class OidLoginController extends Controller {
 		$socialuser->federate ($localuser);
 
 		// Send to confirm email with a confirmation code if LOA is too low for us
-		if ($userloa <= 1) userProfile::sendVerificationCode($localuser, $request->email);
+		echo 'Configure uncomment userProfile::sendVerificationCode to send an email verification code';
+		// if ($userloa <= 1) userProfile::sendVerificationCode($localuser, $request->email);
 
 		// finally log user and try to return to the intended page
         return $this->userHasLoggedIn($localuser, $userloa);
