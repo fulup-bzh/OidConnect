@@ -111,7 +111,8 @@ INSTALLATION:
 
 6) Check you basic install works
 
-     - start a local server with : php -t public -S oidconnect.localnet:8080
+     - add the alias oidconnect.localnet in /etc/hosts pointing to 127.0.0.0
+     - start a local server with : php -t public -S 127.0.0.1:8080
      - point a browser on: http://oidconnect.localnet:8080
 
      Note: you can replace oidconnect.localnet if you only test with GitHub+Facebook
