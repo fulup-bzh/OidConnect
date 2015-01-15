@@ -117,7 +117,7 @@ class OidLoginController extends Controller {
 
 		// at 1st call user has not the IDP code we redirect for authentication
 		$hasCode = $request->has('code');
-		if (!$hasCode) return $this->idpdriver['orange-parner']->getIdpAuthorization();
+		if (!$hasCode) return $this->idpdriver['orange-partner']->getIdpAuthorization();
 
 		// second call we are returning from IDP and we should have a code
 		$socialuser = $this->idpdriver['orange-partner']->getIdpSocialUser($request);

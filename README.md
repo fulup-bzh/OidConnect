@@ -20,8 +20,9 @@ Intro
  profile they get.
 
   - Demo: http://oidconnect.breizhme.net
-  - Video English: http://www.dailymotion.com/video/x2eknro_openid-connect-secure-social-login-by-federation-and-loa_school
-  - Video French:  http://www.dailymotion.com/video/x2eks4g_openid-connect-securiser-les-login-sociaux-par-la-federation_school
+  - Video English: http://breizhme.net/en/video-technical
+  - Video French:  http://breizhme.net/fr/video-technique
+  - DailyMotion:   http://www.dailymotion.com/fulup-bzh
 
  ![OpenId Connect Social Login Screenshot](http://oidconnect.breizhme.net//images/gtb/samples/openid-connect-social-login.png)
 
@@ -111,7 +112,7 @@ INSTALLATION:
 
 6) Check you basic install works
 
-     - add the alias oidconnect.localnet in /etc/hosts pointing to 127.0.0.0
+     - add the alias oidconnect.localnet in /etc/hosts pointing to 127.0.0.1
      - start a local server with : php -t public -S 127.0.0.1:8080
      - point a browser on: http://oidconnect.localnet:8080
 
