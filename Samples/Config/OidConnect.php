@@ -60,6 +60,21 @@ return [
         'login-img'     => $idpImagesDir .'orange-auth.png',
         'avatar-img'    => $idpImagesDir .'orange-avatar.jpg',
     ],
+
+    'france-connect' => [
+        // References: http://doc.integ01.dev-franceconnect.fr/
+        'name'          => 'FranceConnect',
+        'uid'           => 33003,
+        'provider'      => 'OidConnect\IdpDrivers\FranceConnectProvider',
+        'loa'           => 2,  // French Gov IDP
+        'client_id'     => 'xxxx',
+        'client_secret' => 'xxxx',
+        'redirect'      => $redirectDir . 'frconnect/oidconnect',
+        'logo-img'      => $idpImagesDir .'frconnect-logo.png',
+        'login-img'     => $idpImagesDir .'frconnect-consent.png',
+        'avatar-img'    => $idpImagesDir .'frconnect-avatar.jpg',
+    ],
+
     'facebook-connect' => [
         // https://developers.facebook.com/apps
         'name'          => 'facebook',
@@ -129,6 +144,21 @@ return [
         'logo-img'      => $idpImagesDir .'lk-logo.png',
         'login-img'     => $idpImagesDir .'linkedin-auth.png',
         'avatar-img'    => $idpImagesDir .'linkedin-avatar.png',
+    ],
+
+    'paypal-access' => [
+        // https://developer.paypal.com/webapps/developer/applications/createapp
+        'name'          => 'paypal',
+        'sandbox'       => false,  // move to true for sandbox test
+        'uid'           => 10016,
+        'loa'           => 1,  // Email verified by IDP ?
+        'provider'      => 'OidConnect\IdpDrivers\PaypalProvider',
+        'client_id'     => 'xxxxx',
+        'client_secret' => 'xxxxx',
+        'redirect'      => $redirectDir . 'paypal/oidconnect',
+        'logo-img'      => $idpImagesDir .'pp-logo.png',
+        'login-img'     => $idpImagesDir .'paypal-auth.png',
+        'avatar-img'    => $idpImagesDir .'paypal-avatar.jpg',
     ],
 
 ];

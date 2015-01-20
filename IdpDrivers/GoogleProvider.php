@@ -36,7 +36,6 @@ class GoogleProvider extends _DriverSuperClass {
 	protected $headers = ['Content-type' => 'application/x-www-form-urlencoded'];
 
 	// OAuth2 action-3: getUserByToken($tokens) request User attributes through (Rest API)
-	protected $idtokenname= 'user_id'; // idtoken name return with OAuth2 access token
 
 	// each IDP has its own profile schema, while application expects a standard one !!!
 	protected function normalizeProfile ($googleprofile) 	{

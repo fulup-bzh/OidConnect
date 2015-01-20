@@ -12,6 +12,7 @@ Intro
  - LinkedIn  OAuth2
  - Orange    OpenID-Connect
  - PayPal    OpenID-Connect
+ - FranceConnect OpenID-Connect
  - GitHub    OAuth2
  - Local     Password
 

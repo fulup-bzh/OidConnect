@@ -108,7 +108,6 @@ abstract class  _DriverSuperClass {
             $OIDpayload   = json_decode (base64_decode($jsonwebtoken [1]), true);
             //$OIDsignature = json_decode (base64_decode($jsonwebtoken [2]), true);
 
-
             // we need 'socialuid' for federation, other attributes might be useful to application
             $tokens ['socialuid'] = $OIDpayload [$this->oidsubject];
         } else {

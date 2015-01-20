@@ -46,7 +46,6 @@ class PaypalProvider extends _DriverSuperClass {
     // use default basic auth header from parent class
 
     // OAuth2 action-3: getUserByToken($tokens) request User attributes from IDP's Rest API
-    protected $uidtoken     = 'id_token'; // slot name of user's uid within OpenID-Connect tokens
 
     protected function normalizeprofile ($paypalprofile) 	{
 

@@ -10,41 +10,41 @@
  *          process with discard Orange as a candidate of chose for development and test.
  *
  * Reference:
- *  Dashboard: https://www.orangepartner.com/content/welcome-to-your-dashboard
- *  Documents: https://www.orangepartner.com/content/getting-started-user-details
+ *  Dashboard: Not Available
+ *  Documents: http://doc.integ01.dev-franceconnect.fr/
  *
  * Copyright: what ever you like, util you fix bugs by yourself :)
  */
 
 
-class OrangeProvider extends _DriverSuperClass {
+class FranceConnectProvider extends _DriverSuperClass {
 
     // main IDP configuration URLs
     protected $openidconnect = true; // Orange is 100% OpenID compliant
-    protected $authTokenUrl  = 'https://api.orange.com/oauth/v2/authorize';
-    protected $accessTokenUrl= 'https://api.orange.com/oauth/v2/token';
-    protected $identityApiUrl= 'https://api.orange.com/openidconnect/v1/userinfo';
+    protected $authTokenUrl  = 'http://fcp.integ01.dev-franceconnect.fr/user/authorize';
+    protected $accessTokenUrl= 'http://fcp.integ01.dev-franceconnect.fr/user/token';
+    protected $identityApiUrl= 'http://fcp.integ01.dev-franceconnect.fr/api/user';
 
 
     // OAuth2 action-1:  getAuthUrl($state) build authorization token url
-    protected $scopes      = ['openid','profile'];
+    protected $scopes      = ['openid','profile','email'];
 
     // OAuth2 action-2: getAccessToken($code) request access token remove basic auth from header
     // use default basic auth header from parent class
 
     // OAuth2 action-3: getUserByToken($tokens) request User attributes from IDP's Rest API
 
-    protected function normalizeprofile ($orangeprofile) 	{
+    protected function normalizeprofile ($frconnectprofile) 	{
 
-        // Orange profile is quite basic !!!
+        // FranceConnect profile is quite basic !!!
         $normedprofile = [
-            'loa'       => $this->loa,
-            'name'   => $this->checkInfo($orangeprofile, 'name'),
-            'email'  => null,
+            'loa'    => $this->loa,
+            'name'   => $this->checkInfo($frconnectprofile, 'given_name'),
+            'email'  => $this->checkInfo($frconnectprofile, 'email'),
             'avatar' => null,
         ];
 
-        $normedprofile['pseudonym'] = $this->guestPseudonym($orangeprofile, ['name']);
+        $normedprofile['pseudonym'] = $this->guestPseudonym($frconnectprofile, ['given_name', 'family_name']);
 
         return ($normedprofile);
     }
