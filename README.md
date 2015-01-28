@@ -49,13 +49,9 @@ L5/Socialite: Why did I stop using Socialite ?
 
 INSTALLATION:
 
-Manual Installation:
+Manual Installation: from git remains simple and avoids usage of 'composer update'.
 
-  Manual installation from git remains simple and avoids usage of 'composer update'.
-
-Package Installation
-
-  Add "breizhme/oid-connect" : "dev-master" to composer.json
+Package Installation: Add "breizhme/oid-connect" : "dev-master" to composer.json
 
 
 Request Client ID/Secret from the IDPs you want to log from.
