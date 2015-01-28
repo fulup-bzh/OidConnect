@@ -28,11 +28,7 @@ Intro
  ![OpenId Connect Social Login Screenshot](http://oidconnect.breizhme.net//images/gtb/samples/openid-connect-social-login.png)
 
 
-Manual Installation:
-  Until L5 remains in beta OidConnect will not be installable by 'composer'
-  Manual installation is not hard and it avoids usage of 'composer update'.
-  Until beta is ongoing update may impact many vendors packages and introduces
-  unwanted features. The good new: manual installation remains very simple.
+
 
 L5/Socialite: Why did I stop using Socialite ?
   I started my project with L5/Socialite. Unfortunately Socialite had too many
@@ -53,7 +49,16 @@ L5/Socialite: Why did I stop using Socialite ?
 
 INSTALLATION:
 
-00) Request Client ID/Secret from the IDPs you want to log from.
+Manual Installation:
+
+  Manual installation from git remains simple and avoids usage of 'composer update'.
+
+Package Installation
+
+  Add "breizhme/oid-connect" : "dev-master" to composer.json
+
+
+Request Client ID/Secret from the IDPs you want to log from.
 
     Check in Sample/Config/OIDconnect for the provider you want, and the URL of corresponding developer's console to request your application keys.
 
@@ -102,8 +107,9 @@ INSTALLATION:
 
      composer update   # one day someone should explain me why 'composer' it soo slow and require so much resources.
 
+     WARNING: if you installed OidConnect with composer skip step-4 and move directly to step 5
 
-4) Download and uncompressed OidConnect in your L5 project root directory.
+4a) If you install OidConnect from GitHub and not through composer update.
 
      wget https://github.com/fulup-bzh/OidConnect/archive/master.zip
      unzip master.zip
@@ -114,7 +120,7 @@ INSTALLATION:
    common practice is to keep it in your project root, or right under if you want to share
    the same component in between multiple applications.
 
-5) Update autoload class path, to reflect the path you choose.
+4b) Update autoload class path, to reflect the path you choose.
 
      edit composer.json and add a new directory in 'psr-4'
      "psr-4": {
@@ -144,6 +150,8 @@ INSTALLATION:
 
 ----- Configure your distribution ------
 
+Warning: if you installed OidConnect directly through composer and not from git. Directory 'OidConnect/' should be replace by 'vendors/breizhme/oid-connect'
+
 A) Create an SQL database of configure sqlite and check it worked
    -> mysql --user=oiddemo --password='123456' oiddemo
 
@@ -156,20 +164,7 @@ B) Create the .env file [L5 is unclear about config subdir]
      DB_USERNAME=oiddemo
      DB_PASSWORD=123456
 
-C) Declare OidConnect in your L5 namespace
-
-     Edit composer.json and add a line to PSR-4 array
-     "psr-4": {
-        "App\\": "app/",
-        "OidConnect\\": "OidConnect/"
-     }
-
-D) Refresh class autoloader with composer
-
-     composer dumpautoload
-      -> Generating autoload files
-
-E) Create DB tables: federation, users and email verification tables
+C) Create DB tables: federation, users and email verification tables
 
     The simplest way is to replace all L5 distrib migration files with
     the one from this DEMO. In your application you may want your
@@ -186,7 +181,7 @@ E) Create DB tables: federation, users and email verification tables
         Migrated: 2014_12_09_180945_create_federation_key_table
         Migrated: 2014_12_09_190950_create_check_code_table
 
-F) Update your service providers and alias in config/app
+D) Update your service providers and alias in config/app
 
     /*
      * Add OidConnect Providers...
@@ -220,7 +215,7 @@ F) Update your service providers and alias in config/app
 
 
 
-G) Update Middleware. OidConnect is shipped with a set of standard
+E) Update Middleware. OidConnect is shipped with a set of standard
    middleware to handle LOA access restriction on controllers.
 
      // In app/Http/kernel.php add following filters after L5 ones
@@ -234,7 +229,7 @@ G) Update Middleware. OidConnect is shipped with a set of standard
 		'auth.loa3'  => 'OidConnect\LoaAuth\Loa03Middleware',
 	 ];
 
-H) Get API keys from IDPs authentication providers.
+F) Get API keys from IDPs authentication providers.
 
    This is probably the longest part. You may check Samples/Config/OidConnect.php.
    Select the one you like and request an application KEY. You will find
