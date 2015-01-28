@@ -81,8 +81,8 @@ Request Client ID/Secret from the IDPs you want to log from.
 
 2B) Direct install from Github. Install OidConnect dependencies manually to use OidConnect outside composer
 
-   Install 'guzzlehttp' component, this is the only mandatory external dependency for OpenID-Connect. Nevertheless
-   if you wish to use "./artisan route:scan" to test controller samples you may want to add laravel-annotations.
+ Install 'guzzlehttp' component, this is the only mandatory external dependency for OpenID-Connect. Nevertheless
+ if you wish to use "./artisan route:scan" to test controller samples you may want to add laravel-annotations.
 
      Update your composer.json and add modify your require array as such
      "require": {
@@ -93,16 +93,15 @@ Request Client ID/Secret from the IDPs you want to log from.
 
 2C) Optional Route annotation to run samples.
 
-    OidConnect does not depend on annotation, but samples use route annotation. If you want to run sample
-    out of the box you need to add "laravel-annotations" dependencies as those have been removed from standard
-    L5 distribution.
+ OidConnect does not depend on annotation, but samples use route annotation. If you want to run sample
+ out of the box you need to add "laravel-annotations" dependencies as those have been removed from standard
+ L5 distribution.
 
       "adamgoose/laravel-annotations": "~5.0" // optional but used in samples https://github.com/adamgoose/laravel-annotations
 
 3) Refresh your distrib
 
      composer update   # one day someone should explain me why 'composer' it soo slow and require so much resources.
-
      WARNING: if you installed OidConnect with composer skip step-4 and move directly to step 5
 
 4a) If you install OidConnect from GitHub and not through composer update.
@@ -152,20 +151,21 @@ A) Create an SQL database of configure sqlite and check it worked
    -> mysql --user=oiddemo --password='123456' oiddemo
 
 B) Create the .env file [L5 is unclear about config subdir]
-     APP_ENV=local
-     APP_DEBUG=true
-     APP_KEY=123456789 # result of ./artisan key:generate
-     DB_HOST=localhost
-     DB_DATABASE=oiddemo
-     DB_USERNAME=oiddemo
-     DB_PASSWORD=123456
+
+      APP_ENV=local
+      APP_DEBUG=true
+      APP_KEY=123456789 # result of ./artisan key:generate
+      DB_HOST=localhost
+      DB_DATABASE=oiddemo
+      DB_USERNAME=oiddemo
+      DB_PASSWORD=123456
 
 C) Create DB tables: federation, users and email verification tables
 
-    The simplest way is to replace all L5 distrib migration files with
-    the one from this DEMO. In your application you may want your
-    own users repository organization but to keep the demo as simple
-    as possible let's use a shortcut path.
+The simplest way is to replace all L5 distrib migration files with
+the one from this DEMO. In your application you may want your
+own users repository organization but to keep the demo as simple
+as possible let's use a shortcut path.
 
     rm database/migrations/*
     cp OidConnect/Samples/Datebase/2014_1* database/migrations/
