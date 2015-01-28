@@ -130,7 +130,8 @@ Request Client ID/Secret from the IDPs you want to log from.
      update autoloader cache with command: 'composer dumpautoload'
 
 5) If you want to use Orange provider for test, create an alias on localhost
-    ex: in your /etc/hosts   "127.0.0.1 oidconnect.localnet"
+
+     ex: in your /etc/hosts   "127.0.0.1 oidconnect.localnet"
 
 6) Check you basic install works
 
@@ -148,7 +149,8 @@ Request Client ID/Secret from the IDPs you want to log from.
 Warning: if you installed OidConnect directly through composer and not from git. Directory 'OidConnect/' should be replace by 'vendors/breizhme/oid-connect'
 
 A) Create an SQL database of configure sqlite and check it worked
-   -> mysql --user=oiddemo --password='123456' oiddemo
+
+    -> mysql --user=oiddemo --password='123456' oiddemo
 
 B) Create the .env file [L5 is unclear about config subdir]
 
