@@ -1,0 +1,23 @@
+{
+    "name": "breizhme/oid-connect",
+    "description": "OpenID-Connect/OAuth2 Social Login with LOA & Federation builtin",
+    "keywords": ["openid","oauth2", "oauth", "oidc","socialite","laravel"],
+    "require": {
+        "laravel/framework": "~5.0",
+        "guzzlehttp/guzzle": "~5.0",
+        "adamgoose/laravel-annotations": "~5.0"
+    },
+    "license": "Apache-2",
+    "authors": [
+        {
+            "name": "Fulup Ar Foll",
+            "email": "fulup@breizhme.net"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "OidConnect\\": "./"
+        }
+    },
+    "minimum-stability": "dev"
+}
