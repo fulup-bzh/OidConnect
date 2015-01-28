@@ -53,30 +53,50 @@ L5/Socialite: Why did I stop using Socialite ?
 
 INSTALLATION:
 
-00) Request Client ID/Secret from the IDPs you want to log from. Check in Sample/Config/OIDconnect
-    for the provider you want, and the URL of corresponding developer's console to request your
-    application keys.
+00) Request Client ID/Secret from the IDPs you want to log from.
+
+    Check in Sample/Config/OIDconnect for the provider you want, and the URL of corresponding developer's console to request your application keys.
 
 
 -------- prerequisite install necessary components --------
 0) Download an install a fresh Laravel-5 distrib
 
-   composer create-project laravel/laravel <yourdirectryname> dev-develop
+    composer create-project laravel/laravel 'yourdirectryname' dev-develop
 
 1) Verify you did not mess up and did not install version 4.2
 
     grep '5' composer.json
     -> "laravel/framework": "~5.0"
 
-2) Install 'guzzlehttp' component, this is the only mandatory external dependency for OpenID-Connect. Nevertheless
+2A) With Composer breizhme/oid dependency and let's composer do the job for you
+
+    "require": {
+		"laravel/framework": "5.0.*@dev",
+        "breizhme/oid-connect": "dev-master"
+	},
+
+	Note: with this method OidConnect will be in ./vendors/breizhme/oid-connect and not ./OidConnect
+	all path of this documentation refer to direct GitHub installation.
+
+2B) Direct install from Github. Install OidConnect dependencies manually to use OidConnect outside composer
+
+   Install 'guzzlehttp' component, this is the only mandatory external dependency for OpenID-Connect. Nevertheless
    if you wish to use "./artisan route:scan" to test controller samples you may want to add laravel-annotations.
 
      Update your composer.json and add modify your require array as such
      "require": {
         "laravel/framework": "~5.0",
         "guzzlehttp/guzzle": "~5.0",  // this is mandatory for OAuth2 and OpenID
-        "adamgoose/laravel-annotations": "~5.0" // optional but used in samples https://github.com/adamgoose/laravel-annotations
+
      },
+
+2C) Optional Route annotation to run samples.
+
+    OidConnect does not depend on annotation, but samples use route annotation. If you want to run sample
+    out of the box you need to add "laravel-annotations" dependencies as those have been removed from standard
+    L5 distribution.
+
+      "adamgoose/laravel-annotations": "~5.0" // optional but used in samples https://github.com/adamgoose/laravel-annotations
 
 3) Refresh your distrib
 
