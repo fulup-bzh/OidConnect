@@ -59,12 +59,14 @@ NOTE: with composer OidConnect is located in ./vendors/openid/oid-connect
       # clone git source code directory in your L5 project root
       git clone https://github.com/fulup-bzh/OidConnect.git
 
-      # edit composer.json and add a new directory in 'psr-4'
+      # Update your composer.json
+
+      # Add OidConnect into 'psr-4' namespace
       "psr-4": {
  		"AppNameSpace\\": "app/",
  		"OidConnect\\": "OidConnect/"   // where is the Directory where you installed OidConnect archive
    	  }
-   	  # Update your composer.json to add "guzzlehttp/guzzle" module
+   	  # Add "guzzlehttp/guzzle" module
       "require": {
          "laravel/framework": "~5.0",
          "guzzlehttp/guzzle": "~5.0",  // this is mandatory for OAuth2 and OpenID
