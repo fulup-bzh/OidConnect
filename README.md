@@ -30,8 +30,7 @@ Intro
 
 L5/Socialite: Why did I stop using Socialite ?
   I started my project with L5/Socialite. Unfortunately Socialite had too many
-  constrains. I started by overloading Socialite classes, but I arrived to a point where keeping
-  inheritance had more defaults than advantages. My main concerns about Socialite:
+  constrains.
    - Lack of easy OO extendability. Adding a new IDP requires to edit core source components. Changing
      Socialiste's User model is not really possible. Design with multiple very small methods makes
      debug process harder than it should.
@@ -49,43 +48,31 @@ INSTALLATION:
 
 1) Download an install a fresh Laravel-5 distrib
 
-    composer create-project 'laravel/laravel' 'yourdirectryname' dev-develop
-    composer install 'openid/oid-connect'
+      composer create-project 'laravel/laravel' 'yourDirProjectName' dev-develop
+      cd yourDirProjectName
+      composer require 'openid/oid-connect'
 
-2) Update "require" dependencies list in composer.json
+NOTE: with composer OidConnect is located in ./vendors/openid/oid-connect and not ./OidConnect
 
-    "require": {
-		"laravel/framework": "5.0.*@dev",
-        "openid/oid-connect": "~5.0"
-	},
+2) Direct install from Github by passing composer. Install OidConnect dependencies manually to use OidConnect outside composer
 
-	Note: with composer OidConnect will be in ./vendors/openid/oid-connect and not ./OidConnect
+      # clone git source code directory in your L5 project root
+      git clone https://github.com/fulup-bzh/OidConnect.git
 
-2B) Direct install from Github by passing composer. Install OidConnect dependencies manually to use OidConnect outside composer
-
-      wget https://github.com/fulup-bzh/OidConnect/archive/master.zip
-      unzip master.zip
-      mv OidConnect-master OidConnect
-
-    Do not place OidConnect in 'app' or 'vendor' directories to avoid namespace conflict
-    with existing components. Technically OidConnect directory can be anywhere. Nevertheless
-    common practice is to keep it in your project root, or right under if you want to share
-    the same component in between multiple applications.
-
-2c) Update autoload class path, to reflect the path you choose.
-
-      edit composer.json and add a new directory in 'psr-4'
+      # edit composer.json and add a new directory in 'psr-4'
       "psr-4": {
  		"AppNameSpace\\": "app/",
- 		"OidConnect\\": "OidConnect/"
-   	 }
+ 		"OidConnect\\": "OidConnect/"   // where is the Directory where you installed OidConnect archive
+   	  }
+   	  # Update your composer.json to add "guzzlehttp/guzzle" module
+      "require": {
+         "laravel/framework": "~5.0",
+         "guzzlehttp/guzzle": "~5.0",  // this is mandatory for OAuth2 and OpenID
 
-    Note: replace  "OidConnect/" with what ever path you used. OidConnect can even reside outside
-    of your application tree. For exemple "OidConnect\\": "../OidConnect/" allow to share OidConnect
-    in between multiple application, which can be very convenient when developing.
+      },
+	 update autoloader cache with command: 'composer dumpautoload'
 
-      update autoloader cache with command: 'composer dumpautoload'
-
+NOTE: with direct GIT installation you can place OidConnect where ever you want. You may even use a share directory to keep in sync multiple L5 project.
 
 3) Optional Route annotation to run samples.
 
