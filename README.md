@@ -28,8 +28,6 @@ Intro
  ![OpenId Connect Social Login Screenshot](http://oidconnect.breizhme.net//images/gtb/samples/openid-connect-social-login.png)
 
 
-
-
 L5/Socialite: Why did I stop using Socialite ?
   I started my project with L5/Socialite. Unfortunately Socialite had too many
   constrains. I started by overloading Socialite classes, but I arrived to a point where keeping
@@ -49,49 +47,47 @@ L5/Socialite: Why did I stop using Socialite ?
 
 INSTALLATION:
 
-Manual Installation: from git remains simple and avoids usage of 'composer update'.
+1) Download an install a fresh Laravel-5 distrib
 
-Package Installation: Add "breizhme/oid-connect" : "dev-master" to composer.json
+    composer create-project 'laravel/laravel' 'yourdirectryname' dev-develop
+    composer install 'openid/oid-connect'
 
-
-Request Client ID/Secret from the IDPs you want to log from.
-
-    Check in Sample/Config/OIDconnect for the provider you want, and the URL of corresponding developer's console to request your application keys.
-
-
--------- prerequisite install necessary components --------
-0) Download an install a fresh Laravel-5 distrib
-
-    composer create-project laravel/laravel 'yourdirectryname' dev-develop
-
-1) Verify you did not mess up and did not install version 4.2
-
-    grep '5' composer.json
-    -> "laravel/framework": "~5.0"
-
-2A) With Composer breizhme/oid dependency and let's composer do the job for you
+2) Update "require" dependencies list in composer.json
 
     "require": {
 		"laravel/framework": "5.0.*@dev",
-        "breizhme/oid-connect": "dev-master"
+        "openid/oid-connect": "~5.0"
 	},
 
-	Note: with this method OidConnect will be in ./vendors/breizhme/oid-connect and not ./OidConnect
-	all path of this documentation refer to direct GitHub installation.
+	Note: with composer OidConnect will be in ./vendors/openid/oid-connect and not ./OidConnect
 
-2B) Direct install from Github. Install OidConnect dependencies manually to use OidConnect outside composer
+2B) Direct install from Github by passing composer. Install OidConnect dependencies manually to use OidConnect outside composer
 
- Install 'guzzlehttp' component, this is the only mandatory external dependency for OpenID-Connect. Nevertheless
- if you wish to use "./artisan route:scan" to test controller samples you may want to add laravel-annotations.
+      wget https://github.com/fulup-bzh/OidConnect/archive/master.zip
+      unzip master.zip
+      mv OidConnect-master OidConnect
 
-     Update your composer.json and add modify your require array as such
-     "require": {
-        "laravel/framework": "~5.0",
-        "guzzlehttp/guzzle": "~5.0",  // this is mandatory for OAuth2 and OpenID
+    Do not place OidConnect in 'app' or 'vendor' directories to avoid namespace conflict
+    with existing components. Technically OidConnect directory can be anywhere. Nevertheless
+    common practice is to keep it in your project root, or right under if you want to share
+    the same component in between multiple applications.
 
-     },
+2c) Update autoload class path, to reflect the path you choose.
 
-2C) Optional Route annotation to run samples.
+      edit composer.json and add a new directory in 'psr-4'
+      "psr-4": {
+ 		"AppNameSpace\\": "app/",
+ 		"OidConnect\\": "OidConnect/"
+   	 }
+
+    Note: replace  "OidConnect/" with what ever path you used. OidConnect can even reside outside
+    of your application tree. For exemple "OidConnect\\": "../OidConnect/" allow to share OidConnect
+    in between multiple application, which can be very convenient when developing.
+
+      update autoloader cache with command: 'composer dumpautoload'
+
+
+3) Optional Route annotation to run samples.
 
  OidConnect does not depend on annotation, but samples use route annotation. If you want to run sample
  out of the box you need to add "laravel-annotations" dependencies as those have been removed from standard
@@ -99,35 +95,11 @@ Request Client ID/Secret from the IDPs you want to log from.
 
       "adamgoose/laravel-annotations": "~5.0" // optional but used in samples https://github.com/adamgoose/laravel-annotations
 
-3) Refresh your distrib
+4) Refresh your distrib
 
      composer update   # one day someone should explain me why 'composer' it soo slow and require so much resources.
      WARNING: if you installed OidConnect with composer skip step-4 and move directly to step 5
 
-4a) If you install OidConnect from GitHub and not through composer update.
-
-     wget https://github.com/fulup-bzh/OidConnect/archive/master.zip
-     unzip master.zip
-     mv OidConnect-master OidConnect
-
-   Do not place OidConnect in 'app' or 'vendor' directories to avoid namespace conflict
-   with existing components. Technically OidConnect directory can be anywhere. Nevertheless
-   common practice is to keep it in your project root, or right under if you want to share
-   the same component in between multiple applications.
-
-4b) Update autoload class path, to reflect the path you choose.
-
-     edit composer.json and add a new directory in 'psr-4'
-     "psr-4": {
-		"AppNameSpace\\": "app/",
-		"OidConnect\\": "OidConnect/"
-  	 }
-
-   Note: replace  "OidConnect/" with what ever path you used. OidConnect can even reside outside
-   of your application tree. For exemple "OidConnect\\": "../OidConnect/" allow to share OidConnect
-   in between multiple application, which can be very convenient when developing.
-
-     update autoloader cache with command: 'composer dumpautoload'
 
 5) If you want to use Orange provider for test, create an alias on localhost
 
@@ -146,7 +118,7 @@ Request Client ID/Secret from the IDPs you want to log from.
 
 ----- Configure your distribution ------
 
-Warning: if you installed OidConnect directly through composer and not from git. Directory 'OidConnect/' should be replace by 'vendors/breizhme/oid-connect'
+Warning: if you installed OidConnect directly through composer and not from git. Directory 'OidConnect/' should be replace by 'vendors/openid/oid-connect'
 
 A) Create an SQL database of configure sqlite and check it worked
 

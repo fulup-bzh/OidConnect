@@ -1,5 +1,5 @@
 {
-    "name": "breizhme/oid-connect",
+    "name": "openid/oid-connect",
     "description": "OpenID-Connect/OAuth2 Social Login with LOA & Federation builtin",
     "keywords": ["openid","oauth2", "oauth", "oidc","socialite","laravel"],
     "require": {
@@ -18,5 +18,11 @@
             "OidConnect\\": "./"
         }
     },
-    "minimum-stability": "dev"
+    "source": {
+                "url": "https://github.com/fulup-bzh/OidConnect.git",
+                "type": "git",
+                "reference": "master"
+    },
+    "minimum-stability": "dev",
+    "version": "5.0"
 }
