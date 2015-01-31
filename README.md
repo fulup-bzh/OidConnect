@@ -52,7 +52,7 @@ INSTALLATION:
       cd yourDirProjectName
       composer require 'openid/oid-connect'
 
-NOTE: with composer OidConnect is located in ./vendors/openid/oid-connect and not ./OidConnect
+NOTE: with composer OidConnect is located in ./vendors/openid/oid-connect
 
 2) Direct install from Github by passing composer. Install OidConnect dependencies manually to use OidConnect outside composer
 
@@ -70,7 +70,8 @@ NOTE: with composer OidConnect is located in ./vendors/openid/oid-connect and no
          "guzzlehttp/guzzle": "~5.0",  // this is mandatory for OAuth2 and OpenID
 
       },
-	 update autoloader cache with command: 'composer dumpautoload'
+	  composer dumpautoload # update autoloader cache
+	  composer update       # upload guzzle dependencies
 
 NOTE: with direct GIT installation you can place OidConnect where ever you want. You may even use a share directory to keep in sync multiple L5 project.
 
@@ -80,19 +81,14 @@ NOTE: with direct GIT installation you can place OidConnect where ever you want.
  out of the box you need to add "laravel-annotations" dependencies as those have been removed from standard
  L5 distribution.
 
-      "adamgoose/laravel-annotations": "~5.0" // optional but used in samples https://github.com/adamgoose/laravel-annotations
+     composer require "adamgoose/laravel-annotations" # https://github.com/adamgoose/laravel-annotations
+     composer update
 
-4) Refresh your distrib
-
-     composer update   # one day someone should explain me why 'composer' it soo slow and require so much resources.
-     WARNING: if you installed OidConnect with composer skip step-4 and move directly to step 5
-
-
-5) If you want to use Orange provider for test, create an alias on localhost
+4) If you want to use Orange provider for test, create an alias on localhost
 
      ex: in your /etc/hosts   "127.0.0.1 oidconnect.localnet"
 
-6) Check you basic install works
+5) Check you basic install works
 
      - add the alias oidconnect.localnet in /etc/hosts pointing to 127.0.0.1
      - start a local server with : php -t public -S 127.0.0.1:8080
