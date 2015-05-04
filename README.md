@@ -18,7 +18,7 @@ Intro
 
  Last but not least it supports multiple level of assurances. Allowing application to choose
  the level of thrust depending on the source of Social authentication or the quality of the
- profile they get.
+ profile they provide.
 
   - Demo: http://oidconnect.breizhme.net
   - Video English: http://breizhme.net/en/video-technical
@@ -46,7 +46,7 @@ L5/Socialite: Why did I stop using Socialite ?
 
 INSTALLATION:
 
-1) Download an install a fresh Laravel-5 distrib
+1) Download & install a fresh Laravel-5 distribution
 
       composer create-project 'laravel/laravel' 'yourDirProjectName' dev-develop
       cd yourDirProjectName
@@ -80,10 +80,9 @@ NOTE: with direct GIT installation you can place OidConnect where ever you want.
 3) Optional Route annotation to run samples.
 
  OidConnect does not depend on annotation, but samples use route annotation. If you want to run sample
- out of the box you need to add "laravel-annotations" dependencies as those have been removed from standard
- L5 distribution.
+ out of the box you should install "laravel-annotations" that is one of LaravelCollective packages.
 
-     composer require "adamgoose/laravel-annotations" # https://github.com/adamgoose/laravel-annotations
+     composer require "laravelcollective/annotations" # http://laravelcollective.com/docs/5.0/annotations
      composer update
 
 4) If you want to use Orange provider for test, create an alias on localhost

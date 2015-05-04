@@ -31,6 +31,9 @@ return [
     // IDP Provider definition [name, uid, provider] must be present
     // Other parameters may be required depending on Provider implementation
 
+    // WARNING: redirect URL is your local redirect and depends on your config
+    // and should be a valid URL within your own application. Remote IDP URL is
+    // fix and defined within IdpDriver.
 
     'github-oauth2' => [
         'name'          => 'github',
@@ -39,7 +42,7 @@ return [
         'loa'           => 1,  // Email not verified
         'client_id'     => 'xxxxxx',
         'client_secret' => 'xxxxxxxxxxx',
-        'redirect'      => $redirectDir . 'github',
+        'redirect'      => $redirectDir . 'github-login',
         'logo-img'      => $idpImagesDir .'gh-logo.png',
         'login-img'     => $idpImagesDir .'github-consent.png',
         'avatar-img'    => $idpImagesDir .'github-avatar.jpg',
@@ -69,7 +72,7 @@ return [
         'loa'           => 2,  // French Gov IDP
         'client_id'     => 'xxxx',
         'client_secret' => 'xxxx',
-        'redirect'      => $redirectDir . 'frconnect/oidconnect',
+        'redirect'      => $redirectDir . 'frconnect-login',
         'logo-img'      => $idpImagesDir .'frconnect-logo.png',
         'login-img'     => $idpImagesDir .'frconnect-consent.png',
         'avatar-img'    => $idpImagesDir .'frconnect-avatar.jpg',
@@ -155,7 +158,7 @@ return [
         'provider'      => 'OidConnect\IdpDrivers\PaypalProvider',
         'client_id'     => 'xxxxx',
         'client_secret' => 'xxxxx',
-        'redirect'      => $redirectDir . 'paypal/oidconnect',
+        'redirect'      => $redirectDir . 'paypal-login',
         'logo-img'      => $idpImagesDir .'pp-logo.png',
         'login-img'     => $idpImagesDir .'paypal-auth.png',
         'avatar-img'    => $idpImagesDir .'paypal-avatar.jpg',
