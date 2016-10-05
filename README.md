@@ -84,6 +84,9 @@ NOTE: with direct GIT installation you can place OidConnect where ever you want.
 
      composer require "laravelcollective/annotations" # http://laravelcollective.com/docs/5.0/annotations
      composer update
+     
+ note: as annotation is not validate by default anymore within Laravel you should run route:scan command to create routes
+     artisan route:scan
 
 4) If you want to use Orange provider for test, create an alias on localhost
 
@@ -301,6 +304,9 @@ G) Go in Sample directory install:
     configure properly resources/config/mail this part will fail. Alternatively
     you may comment out userProfile::sendVerificationCode line in Login controller.
 
+  Note on SSL and Login. Some provider will refuse you to log when you're not comming from a valid SSL URL.
+  For testing purpose this should be an issue, but when going to production it probably will. For help on how
+  to install a self issue certificate You may check https://laracasts.com/discuss/channels/general-discussion/curl-error-60-ssl-certificate-problem-unable-to-get-local-issuer-certificate
 
   ------------- Extending OidConnect ---------------------------------
   OidConnect should be pretty easy to extend.
